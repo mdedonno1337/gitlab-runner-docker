@@ -5,11 +5,9 @@ services:
             context: .
             dockerfile: ./Dockerfile
         
-        env_file:
-            - ./env
-        
         volumes:
             - /etc/localtime:/etc/localtime:ro
             - /var/run/docker.sock:/var/run/docker.sock
+            - ./env:/tmp/config/env
         
         restart: always
