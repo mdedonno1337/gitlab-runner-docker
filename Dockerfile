@@ -38,6 +38,8 @@ RUN curl -L https://github.com/docker/compose/releases/download/${DOCKERCOMPOSE}
 ADD ./register.sh /tmp/register.sh
 ADD ./entrypoint.sh /tmp/entrypoint.sh
 
+RUN chmod +x /tmp/*.sh
+
 ADD ./env /tmp/env
 
 ENTRYPOINT [ "/tmp/entrypoint.sh" ]
