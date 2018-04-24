@@ -9,5 +9,6 @@ services:
             - /etc/localtime:/etc/localtime:ro
             - /var/run/docker.sock:/var/run/docker.sock
             - ./env:/tmp/config/env
+            - ./keys:/tmp/keys
         
         restart: always

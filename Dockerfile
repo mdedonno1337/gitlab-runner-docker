@@ -40,6 +40,6 @@ ADD ./entrypoint.sh /tmp/entrypoint.sh
 
 RUN chmod +x /tmp/*.sh
 
-VOLUME [ '/tmp/config' ]
+VOLUME [ '/tmp/config', '/tmp/keys' ]
 
 ENTRYPOINT [ "/tmp/entrypoint.sh" ]
