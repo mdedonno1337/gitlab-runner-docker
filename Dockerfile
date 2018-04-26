@@ -3,7 +3,7 @@ FROM debian
 RUN apt update && \
 	apt full-upgrade -y
 
-RUN apt install -y curl
+RUN apt install -y curl make
 
 WORKDIR /tmp
 
