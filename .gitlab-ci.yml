@@ -1,5 +1,6 @@
 stages:
     - build
+    - push
 
 before_script:
     - docker --version
@@ -8,3 +9,11 @@ build:
     stage: build
     script:
         - docker build --pull -t gitlab-runner-docker .
+
+push:
+    stage: push
+    script:
+        - docker tag gitlab-runner-docker ${REGISTRY}/gitlab-runner-docker
+        - docker push ${REGISTRY}/gitlab-runner-docker
+
+      
