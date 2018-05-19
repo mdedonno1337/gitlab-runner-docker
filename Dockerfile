@@ -21,7 +21,7 @@ RUN apt install -y gitlab-runner
 #	Docker
 
 ARG DOCKERCLI="docker-18.03.1-ce"
-ARG DOCKERCOMPOSE="1.21.0"
+ARG DOCKERCOMPOSE="1.21.2"
 
 RUN curl https://download.docker.com/linux/static/stable/x86_64/${DOCKERCLI}.tgz -o /tmp/docker-cli.tgz && \
     tar xzvf /tmp/docker-cli.tgz -C /tmp && \
