@@ -20,4 +20,4 @@ if [ -f "${CA_CERTIFICATES_PATH}" ]; then
 fi
 
 # launch gitlab-ci-multi-runner passing all arguments
-exec gitlab-ci-multi-runner run --user=gitlab-runner --working-directory=/home/gitlab-runner
+exec gitlab-runner run --user=gitlab-runner --working-directory=/home/gitlab-runner
