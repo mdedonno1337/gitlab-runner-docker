@@ -1,4 +1,5 @@
 FROM debian
+MAINTAINER Marco De Donno <Marco.DeDonno@unil.ch>
 
 RUN apt update && \
 	apt full-upgrade -y
