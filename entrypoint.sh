@@ -1,5 +1,7 @@
 #!/bin/bash
 
+trap '/tmp/exiting.sh' 0
+
 exec /tmp/register.sh &
 
 DATA_DIR="/etc/gitlab-runner"

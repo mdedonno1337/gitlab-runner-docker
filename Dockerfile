@@ -36,6 +36,7 @@ RUN curl -L https://github.com/docker/compose/releases/download/${DOCKERCOMPOSE}
 ################################################################################
 #	Scripts
 
+ADD ./exiting.sh /tmp/exiting.sh
 ADD ./register.sh /tmp/register.sh
 ADD ./entrypoint.sh /tmp/entrypoint.sh
 
