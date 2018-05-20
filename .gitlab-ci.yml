@@ -1,6 +1,7 @@
 stages:
     - build
     - push
+    - clean
 
 before_script:
     - docker --version
@@ -9,12 +10,15 @@ before_script:
 build:
     stage: build
     script:
-        - docker build --pull -t gitlab-runner-docker .
+        - docker build --pull -t gitlab-runner-docker:$CI_PIPELINE_ID .
 
 push:
     stage: push
     script:
-        - docker tag gitlab-runner-docker ${REGISTRY}/gitlab-runner-docker
+        - docker tag gitlab-runner-docker:$CI_PIPELINE_ID ${REGISTRY}/gitlab-runner-docker
         - docker push ${REGISTRY}/gitlab-runner-docker
 
-      
+clean:
+    stage: clean
+    script:
+        - docker rmi -f gitlab-runner-docker:$CI_PIPELINE_ID
