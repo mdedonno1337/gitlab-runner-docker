@@ -1,7 +1,6 @@
 #!/bin/bash
 
 gitlab-runner unregister --all-runners
-gitlab-runner stop
-gitlab-runner uninstall
+kill -2 $(pidof gitlab-runner)
 
 exit 0
