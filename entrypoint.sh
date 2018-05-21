@@ -22,4 +22,8 @@ if [ -f "${CA_CERTIFICATES_PATH}" ]; then
 fi
 
 # launch gitlab-ci-multi-runner passing all arguments
-exec gitlab-runner run --user=gitlab-runner --working-directory=/home/gitlab-runner
+gitlab-runner run --user=gitlab-runner --working-directory=/home/gitlab-runner &
+BACK_PID=$!
+wait $BACK_PID
+
+/tmp/exiting.sh
