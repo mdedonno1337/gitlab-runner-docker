@@ -1,4 +1,4 @@
-FROM debian
+FROM debian:9
 MAINTAINER Marco De Donno <Marco.DeDonno@unil.ch>
 
 RUN apt update && \
@@ -14,7 +14,7 @@ WORKDIR /tmp
 RUN curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh -o get-gitlab-runner.sh
 RUN bash ./get-gitlab-runner.sh
 
-ADD ./pin-gitlab-runner.pref /etc/apt/preferences.d/pin-gitlab-runner.pref
+COPY ./pin-gitlab-runner.pref /etc/apt/preferences.d/pin-gitlab-runner.pref
 
 RUN apt install -y gitlab-runner
 
@@ -30,15 +30,15 @@ RUN curl https://download.docker.com/linux/static/edge/x86_64/${DOCKERCLI}.tgz -
     mv /tmp/docker/docker /usr/bin && \
     rm /tmp/docker/*
 
-RUN curl -L https://github.com/docker/compose/releases/download/${DOCKERCOMPOSE}/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && \
+RUN curl -L https://github.com/docker/compose/releases/download/${DOCKERCOMPOSE}/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose && \
 	chmod +x /usr/local/bin/docker-compose
 
 ################################################################################
 #	Scripts
 
-ADD ./exiting.sh /tmp/exiting.sh
-ADD ./register.sh /tmp/register.sh
-ADD ./entrypoint.sh /tmp/entrypoint.sh
+COPY ./exiting.sh /tmp/exiting.sh
+COPY ./register.sh /tmp/register.sh
+COPY ./entrypoint.sh /tmp/entrypoint.sh
 
 RUN chmod +x /tmp/*.sh
 
