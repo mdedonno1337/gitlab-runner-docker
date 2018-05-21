@@ -6,6 +6,10 @@ CONFIG_FILE=${CONFIG_FILE:-$DATA_DIR/config.toml}
 # Trap exit-codes send by Docker
 trap '/tmp/exiting.sh' 0
 
+# Update the keys permissions
+chmod 600 /tmp/keys/*
+chown gitlab-runner:gitlab-runner /tmp/keys/*
+
 # Startup script to register the worker to the gitlab server
 exec /tmp/register.sh &
 

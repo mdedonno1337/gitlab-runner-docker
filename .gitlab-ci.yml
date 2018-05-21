@@ -2,6 +2,7 @@ stages:
     - build
     - push
     - clean
+    - deploy
 
 before_script:
     - docker --version
@@ -24,3 +25,12 @@ clean:
     stage: clean
     script:
         - docker rmi -f gitlab-runner-docker:$CI_PIPELINE_ID
+
+deploy:
+    stage: deploy
+    script:
+        - echo Deploying production on ${PROD_HOST}...
+        - ssh -o StrictHostKeyChecking=no -i ${PROD_KEY} ${PROD_USER}@${PROD_HOST} ${PROD_SCRIPT}
+    only:
+        - master
+    when: manual
