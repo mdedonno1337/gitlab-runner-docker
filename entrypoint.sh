@@ -26,4 +26,4 @@ gitlab-runner run --user=gitlab-runner --working-directory=/home/gitlab-runner &
 BACK_PID=$!
 wait $BACK_PID
 
-/tmp/exiting.sh
+/tmp/exiting.sh > /dev/null 2>&1
