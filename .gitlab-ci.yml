@@ -33,4 +33,3 @@ deploy:
         - ssh -o StrictHostKeyChecking=no -i ${PROD_KEY} ${PROD_USER}@${PROD_HOST} ${PROD_SCRIPT}
     only:
         - master
-    when: manual
