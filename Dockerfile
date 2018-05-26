@@ -4,7 +4,7 @@ LABEL maintainer="Marco De Donno <Marco.DeDonno@unil.ch>"
 RUN apt update && \
 	apt full-upgrade -y
 
-RUN apt install -y curl make
+RUN apt install -y curl make git
 
 WORKDIR /tmp
 
