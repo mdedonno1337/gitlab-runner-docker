@@ -30,6 +30,6 @@ deploy:
     stage: deploy
     script:
         - echo Deploying production on ${PROD_HOST}...
-        - docker -H ${PROD_HOST} service update --force gitlab-runner-docker
+        - docker -H ${PROD_HOST} service update --force ${PROD_SERVICE_NAME}
     only:
         - master
