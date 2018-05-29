@@ -30,6 +30,6 @@ deploy:
     stage: deploy
     script:
         - echo Deploying production on ${PROD_HOST}...
-        - ssh -o StrictHostKeyChecking=no -i ${PROD_KEY} ${PROD_USER}@${PROD_HOST} ${PROD_SCRIPT}
+        - docker -H ${PROD_HOST} service update --force gitlab-runner-docker
     only:
         - master
