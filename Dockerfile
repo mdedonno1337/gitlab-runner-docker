@@ -19,6 +19,11 @@ COPY ./pin-gitlab-runner.pref /etc/apt/preferences.d/pin-gitlab-runner.pref
 RUN apt install -y gitlab-runner
 
 ################################################################################
+#	Sphinx documentation builder
+
+RUN apt install -y python-sphinx
+
+################################################################################
 #	Docker
 
 ARG DOCKERCLI="docker-18.05.0-ce"
