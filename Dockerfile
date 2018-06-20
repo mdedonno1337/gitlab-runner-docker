@@ -13,6 +13,8 @@ WORKDIR /tmp
 
 ARG DOCKERCLI="docker-18.05.0-ce"
 ARG DOCKERCOMPOSE="1.21.2"
+ARG CLAIRCTL="v1.2.8"
+ARG REG="v0.14.1"
 
 ################################################################################
 #	Gitlab-runner
@@ -42,6 +44,15 @@ RUN curl -L https://github.com/docker/compose/releases/download/${DOCKERCOMPOSE}
 	chmod +x /usr/local/bin/docker-compose
 
 ################################################################################
+#	Clair tooling
+
+RUN curl -L https://github.com/jgsqware/clairctl/releases/download/${CLAIRCTL}/clairctl-linux-amd64 -o /usr/bin/clairctl && \
+	chmod +x /usr/bin/clairctl
+
+RUN curl -L https://github.com/genuinetools/reg/releases/download/${REG}/reg-linux-amd64 -o /usr/bin/reg && \
+	chmod +x /usr/bin/reg
+
+################################################################################
 #	Scripts
 
 COPY ./exiting.sh /tmp/exiting.sh
@@ -50,6 +61,6 @@ COPY ./entrypoint.sh /tmp/entrypoint.sh
 
 RUN chmod +x /tmp/*.sh
 
-VOLUME [ '/tmp/config', '/tmp/keys', '/root/.ssh' ]
+VOLUME [ '/tmp/config', '/tmp/keys', '/root/.ssh', '/tmp/clairctl' ]
 
 ENTRYPOINT [ "/tmp/entrypoint.sh" ]
