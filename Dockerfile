@@ -61,6 +61,6 @@ COPY ./entrypoint.sh /tmp/entrypoint.sh
 
 RUN chmod +x /tmp/*.sh
 
-VOLUME [ '/tmp/config', '/tmp/keys', '/root/.ssh', '/tmp/clairctl' ]
+VOLUME [ '/tmp/config', '/tmp/keys', '/root/.ssh', '/tmp/config/clairctl' ]
 
 ENTRYPOINT [ "/tmp/entrypoint.sh" ]

@@ -11,6 +11,6 @@ services:
             - ./env:/tmp/config/env
             - ./keys:/tmp/keys
             - ./ssh:/home/gitlab-runner/.ssh
-            - ./clairctl:/tmp/clairctl
+            - ./clairctl:/tmp/config_clairctl
         
         restart: always
