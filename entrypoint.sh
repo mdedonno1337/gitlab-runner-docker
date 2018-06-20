@@ -10,6 +10,11 @@ trap '/tmp/exiting.sh' 0
 chmod 600 /tmp/keys/*
 chown gitlab-runner:gitlab-runner /tmp/keys/*
 
+# Update the permissions for the clairctl folder
+mkdir -p /tmp/clairctl
+chmod 777 /tmp/clairctl
+chown gitlab-runner:gitlab-runner /tmp/clairctl
+
 # Startup script to register the worker to the gitlab server
 exec /tmp/register.sh &
 
