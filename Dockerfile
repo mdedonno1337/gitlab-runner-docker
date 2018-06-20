@@ -9,6 +9,12 @@ RUN apt install -y curl make git dnsutils
 WORKDIR /tmp
 
 ################################################################################
+#	Version pinning
+
+ARG DOCKERCLI="docker-18.05.0-ce"
+ARG DOCKERCOMPOSE="1.21.2"
+
+################################################################################
 #	Gitlab-runner
 
 RUN curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh -o get-gitlab-runner.sh
@@ -25,9 +31,6 @@ RUN apt install -y python-sphinx
 
 ################################################################################
 #	Docker
-
-ARG DOCKERCLI="docker-18.05.0-ce"
-ARG DOCKERCOMPOSE="1.21.2"
 
 RUN curl https://download.docker.com/linux/static/edge/x86_64/${DOCKERCLI}.tgz -o /tmp/docker-cli.tgz && \
     tar xzvf /tmp/docker-cli.tgz -C /tmp && \
