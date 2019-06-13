@@ -11,10 +11,10 @@ WORKDIR /tmp
 ################################################################################
 #	Version pinning
 
-ARG DOCKERCLI="docker-18.06.1-ce"
-ARG DOCKERCOMPOSE="1.22.0"
+ARG DOCKERCLI="docker-18.09.6"
+ARG DOCKERCOMPOSE="1.24.0"
 ARG CLAIRCTL="v1.2.8"
-ARG REG="v0.15.8"
+ARG REG="v0.16.0"
 
 ################################################################################
 #	Gitlab-runner
