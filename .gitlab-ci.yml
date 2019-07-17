@@ -11,7 +11,7 @@ before_script:
 build:
     stage: build
     script:
-        - docker build --pull -t gitlab-runner-docker:$CI_PIPELINE_ID .
+        - docker build --pull --no-cache -t gitlab-runner-docker:$CI_PIPELINE_ID .
 
 push:
     stage: push
