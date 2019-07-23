@@ -11,7 +11,7 @@ WORKDIR /tmp
 ################################################################################
 #	Version pinning
 
-ARG DOCKERCLI="docker-18.09.7"
+ARG DOCKERCLI="docker-19.03.0"
 ARG DOCKERCOMPOSE="1.24.1"
 ARG CLAIRCTL="v1.2.8"
 ARG REG="v0.16.0"
