@@ -24,6 +24,6 @@ deploy:
     stage: deploy
     script:
         - echo Deploying production on ${PROD_HOST}...
-        - docker -H ${PROD_HOST} service update --force --detach --image=${REGISTRY}/gitlab-runner-docker:${CI_COMMIT_SHORT_SHA} ${PROD_SERVICE_NAME}
+        - docker -H ${PROD_HOST} service update --detach --image=${REGISTRY}/gitlab-runner-docker:${CI_COMMIT_SHORT_SHA} ${PROD_SERVICE_NAME}
     only:
         - master
