@@ -4,7 +4,7 @@ LABEL maintainer="Marco De Donno <Marco.DeDonno@unil.ch>"
 RUN apt update && \
 	apt full-upgrade -y
 
-RUN apt install -y curl make git dnsutils openssh-client
+RUN apt install -y curl make git dnsutils openssh-client gettext-base
 
 WORKDIR /tmp
 
