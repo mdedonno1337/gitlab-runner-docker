@@ -9,10 +9,12 @@ See the .gitlab-ci.yml file to have an example of self-compiling and self-deploy
 
 ### List of tools
 
-	- gitlab-runner
-	- Docker CLI
-	- docker-compose
-	- make
-	- curl
-	- git
-	- python sphinx
+    - gitlab-runner
+    - Docker CLI
+    - docker-compose
+    - make
+    - curl
+    - git
+    - python sphinx
+    - clair
+    - reg
