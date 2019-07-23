@@ -11,32 +11,32 @@ before_script:
 build:
     stage: build
     script:
-        - docker build --pull -t gitlab-runner-docker:$CI_PIPELINE_ID .
+        - docker build --pull -t gitlab-runner-docker:${CI_COMMIT_SHORT_SHA} .
 
 push:
     stage: push
     only:
         - master
     script:
-        - docker tag gitlab-runner-docker:$CI_PIPELINE_ID ${REGISTRY}/gitlab-runner-docker
-        - docker push ${REGISTRY}/gitlab-runner-docker
+        - docker tag gitlab-runner-docker:${CI_COMMIT_SHORT_SHA} ${REGISTRY}/gitlab-runner-docker:${CI_COMMIT_SHORT_SHA}
+        - docker push ${REGISTRY}/gitlab-runner-docker:${CI_COMMIT_SHORT_SHA}
 
 temporary:
     stage: clean
     script:
-        - docker rmi -f gitlab-runner-docker:$CI_PIPELINE_ID
+        - docker rmi -f gitlab-runner-docker:${CI_COMMIT_SHORT_SHA}
 
 registry:
     stage: clean
     only:
         - master
     script:
-        - docker rmi -f ${REGISTRY}/gitlab-runner-docker
+        - docker rmi -f ${REGISTRY}/gitlab-runner-docker:${CI_COMMIT_SHORT_SHA}
 
 deploy:
     stage: deploy
     script:
         - echo Deploying production on ${PROD_HOST}...
-        - docker -H ${PROD_HOST} service update --force --detach --image=$(docker inspect --format='{{index .RepoDigests 0}}' ${REGISTRY}/gitlab-runner-docker) ${PROD_SERVICE_NAME}
+        - docker -H ${PROD_HOST} service update --force --detach --image=${REGISTRY}/gitlab-runner-docker:${CI_COMMIT_SHORT_SHA} ${PROD_SERVICE_NAME}
     only:
         - master
