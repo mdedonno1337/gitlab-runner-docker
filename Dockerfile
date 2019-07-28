@@ -2,7 +2,7 @@ FROM debian:9
 LABEL maintainer="Marco De Donno <Marco.DeDonno@unil.ch>"
 
 RUN apt update && \
-    apt install -y curl make git dnsutils openssh-client gettext-base
+    apt install -y curl make git dnsutils openssh-client gettext-base tree
 
 WORKDIR /tmp
 
