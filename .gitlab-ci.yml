@@ -18,7 +18,9 @@ push:
         - master
     script:
         - docker tag gitlab-runner-docker:${CI_COMMIT_SHORT_SHA} ${REGISTRY}/gitlab-runner-docker:${CI_COMMIT_SHORT_SHA}
+        - docker tag gitlab-runner-docker:${CI_COMMIT_SHORT_SHA} ${REGISTRY}/gitlab-runner-docker:latest
         - docker push ${REGISTRY}/gitlab-runner-docker:${CI_COMMIT_SHORT_SHA}
+        - docker push ${REGISTRY}/gitlab-runner-docker:latest
 
 deploy:
     stage: deploy
